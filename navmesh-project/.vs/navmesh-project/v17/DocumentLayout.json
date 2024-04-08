@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\djebb\\OneDrive\\Documente\\GitHub\\navMesh-game-main\\navmesh-project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E6C4B10-53E9-7946-699F-B43A75427CB0}|Assembly-CSharp.csproj|c:\\users\\djebb\\onedrive\\documente\\github\\navmesh-game-main\\navmesh-project\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E6C4B10-53E9-7946-699F-B43A75427CB0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\djebb\\OneDrive\\Documente\\GitHub\\navMesh-game-main\\navmesh-project\\Assets\\scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\djebb\\OneDrive\\Documente\\GitHub\\navMesh-game-main\\navmesh-project\\Assets\\scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\scripts\\Player.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAiwDkAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-29T01:08:09.92Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
