@@ -38,22 +38,29 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-     
         float rotation = horizontalInput * rotateSpeed * Time.deltaTime;
         transform.Rotate(0f, rotation, 0f);
 
         Vector3 movement = transform.forward * verticalInput * speed * Time.deltaTime;
 
-        
-        float playerHeight = 2f; 
+        float playerHeight = 2f;
         Vector3 capsuleBottom = transform.position - Vector3.up * playerHeight / 2f;
         Vector3 capsuleTop = transform.position + Vector3.up * playerHeight / 2f;
 
-      
-        float playerRadius = 3f; 
-        bool canMove = !Physics.CapsuleCast(capsuleBottom, capsuleTop, playerRadius, movement.normalized, movement.magnitude);
+        float playerRadius = 3f;
+        bool canMove = true;
 
         
+        RaycastHit hit;
+        if (Physics.CapsuleCast(capsuleBottom, capsuleTop, playerRadius, movement.normalized, out hit, movement.magnitude))
+        {
+         
+            if (!hit.collider.isTrigger)
+            {
+                canMove = false; 
+            }
+        }
+
         if (canMove)
         {
             transform.Translate(movement, Space.World);

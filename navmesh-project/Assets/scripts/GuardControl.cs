@@ -57,7 +57,7 @@ public class GuardControl : MonoBehaviour
         }
 #endif
         if (ICanSee(Player))
-        {
+        {   
             etatActuel = Etats.Poursuivre; //je le vois donc je le poursuit
             dernierEmplacementVu = Player.position;// je le vois donc j'enregistre sa position
         }
