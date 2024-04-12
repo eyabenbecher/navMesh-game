@@ -2,61 +2,53 @@
 //using System.Collections.Generic;
 //using UnityEngine;
 
-//public class Player : MonoBehaviour
+//public class Movement : MonoBehaviour
 //{
-//     [SerializeField] private float moveSpeed = 7f;
-//    void Update()
+
+//   public float speed = 10f;
+//   public float rotateSpeed = 10f;
+
+//  private Vector3 movement;
+//    private float rotation;
+
+//   void Update()
 //    {
-//        Vector2 inputVector = new Vector2(0, 0);
-//        if (Input.GetKey(KeyCode.A))
-//        {
-//            inputVector.y=+1; 
-//        }
-//        if (Input.GetKey(KeyCode.D))
-//        {
-//            inputVector.y = -1;
-//        }
-//        if (Input.GetKey(KeyCode.S))
-//        {
-//            inputVector.x = -1;
-//        }
-//        if (Input.GetKey(KeyCode.W))
-//        {
-//            inputVector.x = +1;
-//        }
-//        inputVector =inputVector.normalized;
-//        Vector3 moveDir = new Vector3(inputVector.x,0,inputVector.y);
-
-//            transform.position += moveDir * moveSpeed * Time.deltaTime;
-
+//      movement.z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+//        rotation = Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime;
 //    }
-//}
 
+////    void FixedUpdate()
+////    {
+////        transform.Translate(movement, Space.Self);
+////        transform.Rotate(0f, rotation, 0f);
+////    }
 
-
-using System.Collections;
-using System.Collections.Generic;
+////}
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-
     public float speed = 10f;
-    public float rotateSpeed = 10f;
+public float rotateSpeed = 10f;
 
-    private Vector3 movement;
-    private float rotation;
+private void Update()
+{
+    float horizontalInput = Input.GetAxis("Horizontal");
+    float verticalInput = Input.GetAxis("Vertical");
 
-    void Update()
+
+    float rotation = horizontalInput * rotateSpeed * Time.deltaTime;
+    transform.Rotate(0f, rotation, 0f);
+
+    Vector3 movement = transform.forward * verticalInput * speed * Time.deltaTime;
+
+
+    float playerSize = 0.7f;
+    bool canMove = !Physics.Raycast(transform.position, movement.normalized, playerSize);
+
+    if (canMove)
     {
-        movement.z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        rotation = Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime;
+        transform.Translate(movement, Space.World);
     }
-
-    void FixedUpdate()
-    {
-        transform.Translate(movement, Space.Self);
-        transform.Rotate(0f, rotation, 0f);
-    }
-
+}
 }
