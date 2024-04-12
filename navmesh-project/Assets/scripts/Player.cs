@@ -24,31 +24,39 @@
 ////    }
 
 ////}
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
-public float rotateSpeed = 10f;
+    public float rotateSpeed = 10f;
 
-private void Update()
-{
-    float horizontalInput = Input.GetAxis("Horizontal");
-    float verticalInput = Input.GetAxis("Vertical");
-
-
-    float rotation = horizontalInput * rotateSpeed * Time.deltaTime;
-    transform.Rotate(0f, rotation, 0f);
-
-    Vector3 movement = transform.forward * verticalInput * speed * Time.deltaTime;
-
-
-    float playerSize = 0.7f;
-    bool canMove = !Physics.Raycast(transform.position, movement.normalized, playerSize);
-
-    if (canMove)
+    private void Update()
     {
-        transform.Translate(movement, Space.World);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+     
+        float rotation = horizontalInput * rotateSpeed * Time.deltaTime;
+        transform.Rotate(0f, rotation, 0f);
+
+        Vector3 movement = transform.forward * verticalInput * speed * Time.deltaTime;
+
+        
+        float playerHeight = 2f; 
+        Vector3 capsuleBottom = transform.position - Vector3.up * playerHeight / 2f;
+        Vector3 capsuleTop = transform.position + Vector3.up * playerHeight / 2f;
+
+      
+        float playerRadius = 3f; 
+        bool canMove = !Physics.CapsuleCast(capsuleBottom, capsuleTop, playerRadius, movement.normalized, movement.magnitude);
+
+        
+        if (canMove)
+        {
+            transform.Translate(movement, Space.World);
+        }
     }
-}
 }
